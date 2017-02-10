@@ -14,6 +14,6 @@ import java.io.IOException;
 public class Accueil extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/fiche.jsp").forward(request, response);
     }
 }
