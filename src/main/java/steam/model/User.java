@@ -3,23 +3,21 @@ package steam.model;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import java.util.Date;
-
 /**
  * Created by Yhugo on 10/02/2017.
  */
 public class User {
 
-    public ObjectId id;
+    public String _id;
     public String login;
     public String mdp;
     public String nom;
     public String prenom;
     public String telephone;
     public String adresse;
-    public Date dateNaissance;
+    public String dateNaissance;
 
-    public User(String n, String p, String t, String a, Date date,String log, String mdp){
+    public User(String n, String p, String t, String a, String date,String log, String mdp){
         this.nom=n;
         this.prenom=p;
         this.telephone=t;
@@ -34,17 +32,21 @@ public class User {
         this.prenom = document.get("prenom").toString();
         this.telephone = document.get("telephone").toString();
         this.adresse = document.get("adresse").toString();
-        this.dateNaissance = (java.sql.Date) document.get("datenaissance");
+        this.dateNaissance = document.get("datenaissance").toString();
         this.login = document.get("login").toString();
         this.mdp = document.get("mdp").toString();
     }
 
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
+    public Document toDocument(){
+        Document db = new Document();
+        db.put("nom", this.nom);
+        db.put("prenom", this.prenom);
+        db.put("telephone", this.telephone);
+        db.put("adresse", this.adresse);
+        db.put("datenaissance", this.dateNaissance);
+        db.put("login", this.login);
+        db.put("mdp", this.mdp);
+        return db;
     }
 
     public String getLogin() {
@@ -95,11 +97,11 @@ public class User {
         this.adresse = adresse;
     }
 
-    public Date getDateNaissance() {
+    public String getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(String dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 }

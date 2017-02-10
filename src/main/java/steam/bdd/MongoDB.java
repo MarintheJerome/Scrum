@@ -10,9 +10,10 @@ import steam.model.Game;
  */
 public class MongoDB{
 
-    private MongoCollection<Document> collection;
-    private MongoClient mc;
-    private MongoDatabase mdb;
+    public MongoCollection<Document> collection;
+    public MongoClient mc;
+    public MongoDatabase mdb;
+    public static MongoDB mongoDB;
 
     public MongoDB(){
         mc = new MongoClient("localhost", 27017);
@@ -23,4 +24,13 @@ public class MongoDB{
         MongoCollection collection = mdb.getCollection("games");
         return null;
     }
+
+    public static synchronized MongoDB getInstance(){
+        if(mongoDB != null){
+            mongoDB = new MongoDB();
+        }
+        return mongoDB;
+    }
+
+
 }
