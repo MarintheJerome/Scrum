@@ -88,4 +88,7 @@ public class Game {
     public void setTags(ArrayList<Tag> tags) {
         this.tags = tags;
     }
+
+    public static void find(ObjectId game) {
+    }
 }
