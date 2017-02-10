@@ -39,7 +39,7 @@ public class MongoDB{
         return null;
     }
 
-    public ArrayList<Game> getGameInfo(String name){
+    public ArrayList<Game> getGamesSearch(String name){
         ArrayList<Game> toReturn = new ArrayList<>();
         collection = mdb.getCollection("games");
         FindIterable<Document> games = collection.find();
