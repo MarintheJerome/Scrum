@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class MongoDB{
     private MongoClient mc;
-    private MongoDatabase mdb;
+    public MongoDatabase mdb;
 
     public static MongoDB mongoDB;
 
