@@ -1,36 +1,67 @@
 package steam.model;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.util.Date;
 
 /**
  * Created by Yhugo on 10/02/2017.
  */
-public class UserInfo {
+public class User {
 
+    public ObjectId id;
+    public String login;
+    public String mdp;
     public String nom;
     public String prenom;
     public String telephone;
     public String adresse;
     public Date dateNaissance;
 
-    public UserInfo(String n, String p, String t, String a, Date date){
+    public User(String n, String p, String t, String a, Date date,String log, String mdp){
         this.nom=n;
         this.prenom=p;
         this.telephone=t;
         this.adresse=a;
         this.dateNaissance=date;
+        this.login=log;
+        this.mdp=mdp;
     }
 
-    public UserInfo(Document document){
+    public User(Document document){
         this.nom = document.get("nom").toString();
         this.prenom = document.get("prenom").toString();
         this.telephone = document.get("telephone").toString();
         this.adresse = document.get("adresse").toString();
         this.dateNaissance = (java.sql.Date) document.get("datenaissance");
+        this.login = document.get("login").toString();
+        this.mdp = document.get("mdp").toString();
     }
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
 
     public String getNom() {
         return nom;
