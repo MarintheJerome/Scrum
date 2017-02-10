@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by nitix on 12/11/16.
+ * Created by Jerome on 12/11/16.
  */
 @WebServlet(name = "accueil", urlPatterns = {"/index.jsp"})
-public class Accueil extends HttpServlet {
+public class Fiche extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/fiche.jsp").forward(request, response);
     }
 }
