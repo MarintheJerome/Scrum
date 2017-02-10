@@ -36,7 +36,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <form method="post" action="index.jsp">
+            <form method="post" action="/Inscription">
                 <input type="hidden" name="type" value="inscription">
                 <div class="form-group">
                     <label for="login">Identifiant</label>
@@ -46,25 +46,25 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input name="entreprise" type="checkbox"> Je suis une entreprise
-                    </label>
-                </div>
                 <div class="form-group">
                     <label for="nom">Nom</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
-                    <p class="help-block">Inutile si vous êtes une entreprise</p>
                 </div>
                 <div class="form-group">
                     <label for="prenom">Prénom</label>
                     <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
-                    <p class="help-block">Inutile si vous êtes une entreprise</p>
                 </div>
                 <div class="form-group">
-                    <label for="raison">Raison sociale</label>
-                    <input type="text" class="form-control" id="raison" name="raison" placeholder="Raison sociale">
-                    <p class="help-block">Inutile si vous êtes une personne</p>
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse">
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Téléphone">
+                </div>
+                <div class="form-group">
+                    <label for="dateNaissance">Date de Naissance</label>
+                    <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
                 </div>
                 <button type="submit" class="btn btn-default">S'enregistrer</button>
             </form>
