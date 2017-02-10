@@ -1,4 +1,6 @@
-package model;
+package steam.model;
+
+import org.bson.Document;
 
 import java.util.Date;
 
@@ -12,6 +14,22 @@ public class UserInfo {
     public String telephone;
     public String adresse;
     public Date dateNaissance;
+
+    public UserInfo(String n, String p, String t, String a, Date date){
+        this.nom=n;
+        this.prenom=p;
+        this.telephone=t;
+        this.adresse=a;
+        this.dateNaissance=date;
+    }
+
+    public UserInfo(Document document){
+        this.nom = document.get("nom").toString();
+        this.prenom = document.get("prenom").toString();
+        this.telephone = document.get("telephone").toString();
+        this.adresse = document.get("adresse").toString();
+        this.dateNaissance = (java.sql.Date) document.get("datenaissance");
+    }
 
 
     public String getNom() {
