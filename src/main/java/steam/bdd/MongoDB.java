@@ -9,6 +9,9 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.BSON;
 import org.bson.Document;
 import steam.model.Game;
+
+import java.util.ArrayList;
+
 /**
  * Created by jerome on 21/01/2017.
  */
@@ -34,5 +37,19 @@ public class MongoDB{
             }
         }
         return null;
+    }
+
+    public ArrayList<Game> getGameInfo(String name){
+        ArrayList<Game> toReturn = new ArrayList<>();
+        collection = mdb.getCollection("games");
+        FindIterable<Document> games = collection.find();
+        Game game;
+        for(Document document : games){
+            game = new Game(document);
+            if(game.getName().contains(name)){
+                toReturn.add(game);
+            }
+        }
+        return toReturn;
     }
 }
