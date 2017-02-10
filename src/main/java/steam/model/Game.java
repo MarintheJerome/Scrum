@@ -1,6 +1,7 @@
 package steam.model;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
  * Created by jerome on 10/02/2017.
  */
 public class Game {
+    private ObjectId id;
     private String name;
     private String shortDescription;
     private String fullDescription;
@@ -24,6 +26,7 @@ public class Game {
     }
 
     public Game(Document document){
+        this.id = (ObjectId) document.get("_id");
         this.name = document.get("name").toString();
         this.shortDescription = document.get("shortDescription").toString();
         this.fullDescription = document.get("fullDescription").toString();
@@ -36,6 +39,14 @@ public class Game {
             }
             this.tags.add(new Tag(tag));
         }
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getName() {
