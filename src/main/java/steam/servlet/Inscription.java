@@ -1,7 +1,13 @@
 package steam.servlet;
 
+import org.bson.Document;
+import org.mindrot.jbcrypt.BCrypt;
+import steam.bdd.MongoDB;
+import steam.model.User;
+
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by Yhugo on 10/02/2017.
@@ -22,17 +28,22 @@ public class Inscription extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 
         String login = request.getParameter(LOGIN);
-        String motDePasse = request.getParameter(MDP);
+        String mdp = request.getParameter(MDP);
         String nom = request.getParameter(NOM);
         String prenom = request.getParameter(PRENOM);
         String adresse = request.getParameter(ADRESSE);
         String telephone = request.getParameter(TELEPHONE);
         String datenaissance = request.getParameter(DATENAISSANCE);
 
+        User user = new User(nom, prenom, telephone, adresse, datenaissance,login, BCrypt.hashpw(mdp, BCrypt.gensalt()));
+
+        Document d = user.toDocument();
+
+        MongoDB.getInstance().mdb.getCollection("Users").insertOne(d);
+
         StringBuilder message = new StringBuilder();
-
-
         message.append("Vous êtes bien inscris, merci d'utiliser notre service");
+
         request.getSession().setAttribute("message", message);
         this.getServletContext().getRequestDispatcher(RESULT).forward( request, response );
 

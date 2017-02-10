@@ -19,6 +19,8 @@ public class MongoDB{
     private MongoClient mc;
     private MongoDatabase mdb;
 
+    public static MongoDB mongoDB;
+
     public MongoDB(){
         mc = new MongoClient("localhost", 27017);
         mdb = mc.getDatabase("Scrum");
@@ -35,6 +37,13 @@ public class MongoDB{
             }
         }
         return null;
+    }
+
+    public static synchronized MongoDB getInstance(){
+        if(mongoDB != null){
+            mongoDB = new MongoDB();
+        }
+        return mongoDB;
     }
 
     public ArrayList<Game> getGamesSearch(String name){
