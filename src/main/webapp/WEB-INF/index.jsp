@@ -23,7 +23,13 @@
 <body>
 <div id="divEntete" class = "divGeneral">
     <div id ="divInscription">
-        <a href="inscription">Inscription</a>
+        <p><a href="inscription">Inscription</a></p>
+        <p></p><h2>Menu : </h2></p>
+        <% if (request.getSession().getAttribute("login") == null) { %>
+        <p><a href="/connexion">Connexion </a></p>
+        <% } else { %>
+        <p><a href="/deconnexion">Déconnexion </a></p>
+        <% } %>
     </div>
     <h1 id="titre">Bienvenue sur SteamFanBoy !</h1>
 </div>
