@@ -1,4 +1,12 @@
+<%@ page import="steam.model.Game" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%
+    Game game = new Game();
+    game.setName("Test");
+    game.setShortDescription("lalala");
+    game.setFullDescription("lalalalalalalalalalalala");
+    game.setVideo("../video/sample.mp4");
+%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Fiche de ${name}</title>
+    <title>Fiche de <%=  game.getName() %></title>
 
     <!-- Bootstrap -->
     <link href="../style/bootstrap.min.css" rel="stylesheet">
@@ -20,28 +28,28 @@
     <![endif]-->
 </head>
 <body>
-<h1 class="title">Fiche de ${name}</h1>
+<h1 class="title">Fiche de <%=game.getName()%></h1>
 <div class="container-fluid">
     <div>
         <div class="video">
-            <video>
-                <source src="${video}" type="video/mp4">
+            <video autoplay>
+                <source src="<%=game.getVideo()%>" type="video/mp4">
             </video>
         </div>
         <div class="releasedate">
             <p>
-                ${releasedate}
+                <%=game.getReleaseDate()%>
             </p>
         </div>
         <div class="shortdescription">
             <p>
-                ${shortdescription}
+                <%=game.getShortDescription()%>
             </p>
         </div>
     </div>
     <div class="fulldescription">
         <p>
-            ${fulldescription}
+            <%=game.getFullDescription()%>
         </p>
     </div>
 </div>

@@ -16,6 +16,11 @@ public class Game {
     private String fullDescription;
     private Date releaseDate;
     private ArrayList<Tag> tags;
+    private String video;
+
+    public Game(){
+
+    }
 
     public Game(String name, String shortDescription, String fullDescription, Date releaseDate, ArrayList<Tag> tags) {
         this.name = name;
@@ -79,6 +84,14 @@ public class Game {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getVideo(){
+        return this.video;
+    }
+
+    public void setVideo(String video){
+        this.video = video;
     }
 
     public ArrayList<Tag> getTags() {
