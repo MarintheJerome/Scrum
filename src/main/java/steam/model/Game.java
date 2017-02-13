@@ -1,9 +1,12 @@
 package steam.model;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +19,15 @@ public class Game {
     private String fullDescription;
     private Date releaseDate;
     private ArrayList<Tag> tags;
+    private String video;
+
+    public Game(){
+
+    }
+
+    static MongoClient mc ;
+    static MongoDatabase mdb ;
+    static MongoCollection collection;
 
     public Game(String name, String shortDescription, String fullDescription, Date releaseDate, ArrayList<Tag> tags) {
         this.name = name;
@@ -81,6 +93,14 @@ public class Game {
         this.releaseDate = releaseDate;
     }
 
+    public String getVideo(){
+        return this.video;
+    }
+
+    public void setVideo(String video){
+        this.video = video;
+    }
+
     public ArrayList<Tag> getTags() {
         return tags;
     }
@@ -90,5 +110,27 @@ public class Game {
     }
 
     public static void find(ObjectId game) {
+    }
+
+    public void sauvegarder() {
+        System.out.println("Sauvegarde jeu "+name+"  par MongoDB");
+
+        Document document = toDocument();
+
+        mc = new MongoClient("localhost",27017);
+        mdb = mc.getDatabase("Scrum");
+        collection = mdb.getCollection("games");
+
+        collection.insertOne(document);
+    }
+
+    public Document toDocument() {
+        Document db = new Document();
+        db.put("nom", name);
+        db.put("shortDescription", shortDescription);
+        db.put("fullDescription", fullDescription);
+        db.put("realseDate", releaseDate);
+        db.put("tags", tags);
+        return db;
     }
 }
