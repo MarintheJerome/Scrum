@@ -1,12 +1,9 @@
 package steam.bdd;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import org.bson.BSON;
 import org.bson.Document;
 import steam.model.Game;
 
@@ -41,7 +38,7 @@ public class MongoDB{
     }
 
     public static synchronized MongoDB getInstance(){
-        if(mongoDB != null){
+        if(mongoDB == null){
             mongoDB = new MongoDB();
         }
         return mongoDB;
