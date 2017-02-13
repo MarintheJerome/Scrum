@@ -1,0 +1,98 @@
+#divEntete {
+	height : 35px;
+}
+
+#divInscription {
+	float: right;
+}
+
+#divEnteteDeux {
+	height : 50px;
+}
+
+#divRecherche {
+	margin:auto;
+	float : right;
+}
+
+#titre {
+	text-align: center;
+}
+
+#divMilieu {
+	height : 500px;
+	width: 100%;
+	border: 1px solid black;
+}
+
+#divCategories {
+	height:100%;
+	width:15%;
+	overflow-y: auto;
+	display : inline-block;
+	float: left;
+	border: 1px solid black;
+}
+
+.trEntete {
+	margin : auto;
+	height: 10%;
+	width: 100%;
+}
+
+.tdEntete {
+	margin : auto;
+	font-size: x-large;
+	width: 100%;
+}
+
+.tdCategorie {
+	width: 100%;
+	border:1px solid grey;
+}
+
+.tableEnteteSeparateurPortefeuilleActions {
+	width: 100%;
+	height: 2px;
+	border:1px solid black;
+}
+
+#divListeJeux {
+	height:100%;
+	width:84%;
+	overflow-y: auto;
+	display : inline-block;
+	border: 1px solid black;
+}
+
+.itemTableCategorie {
+	height : 50px;
+}
+
+#tableCategories {
+	margin : auto;
+	width: 100%;
+}
+
+#tableListeDesJeux {
+	margin : auto;
+	width: 100%;
+}
+
+.trJeu {
+	width: 100%;
+	height:150px;
+}
+
+.tdJeu {
+	width: 100%;
+	border:1px solid grey;
+}
+
+#divInfosRapides {
+	height:100%;
+	width:24%;
+	display : inline-block;
+	border: 1px solid purple;
+}
+

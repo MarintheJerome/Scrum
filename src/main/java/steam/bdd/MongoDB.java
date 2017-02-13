@@ -13,10 +13,9 @@ import java.util.ArrayList;
  * Created by jerome on 21/01/2017.
  */
 public class MongoDB{
-
-    public MongoCollection<Document> collection;
-    public MongoClient mc;
+    private MongoClient mc;
     public MongoDatabase mdb;
+
     public static MongoDB mongoDB;
 
     public MongoDB(){
@@ -25,7 +24,7 @@ public class MongoDB{
     }
 
     public Game getGameInfo(String name){
-        collection = mdb.getCollection("games");
+        MongoCollection<Document> collection = mdb.getCollection("games");
         FindIterable<Document> games = collection.find();
         Game game;
         for(Document document : games){
@@ -46,7 +45,7 @@ public class MongoDB{
 
     public ArrayList<Game> getGamesSearch(String name){
         ArrayList<Game> toReturn = new ArrayList<>();
-        collection = mdb.getCollection("games");
+        MongoCollection<Document> collection = mdb.getCollection("games");
         FindIterable<Document> games = collection.find();
         Game game;
         for(Document document : games){

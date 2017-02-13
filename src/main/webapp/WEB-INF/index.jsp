@@ -1,15 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Annuaire</title>
+    <title>Bienvenue sur SteamFanBoy !</title>
 
     <!-- Bootstrap -->
     <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="../style/index.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,68 +21,128 @@
     <![endif]-->
 </head>
 <body>
-<h1>Identifiez-vous ou créez votre compte pour utiliser notre service.</h1>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6">
-            <form method="post" action="index.jsp">
-                <input type="hidden" name="type" value="inscription">
-                <div class="form-group">
-                    <label for="login">Identifiant</label>
-                    <input type="text" class="form-control" id="login" name="login" placeholder="Identifiant">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input name="entreprise" type="checkbox"> Je suis une entreprise
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
-                    <p class="help-block">Inutile si vous êtes une entreprise</p>
-                </div>
-                <div class="form-group">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
-                    <p class="help-block">Inutile si vous êtes une entreprise</p>
-                </div>
-                <div class="form-group">
-                    <label for="raison">Raison sociale</label>
-                    <input type="text" class="form-control" id="raison" name="raison" placeholder="Raison sociale">
-                    <p class="help-block">Inutile si vous êtes une personne</p>
-                </div>
-                <button type="submit" class="btn btn-default">S'enregistrer</button>
-            </form>
-        </div>
-        <div class="col-md-2">
-            <form class="form-horizontal" method="post" action="index.jsp">
-                <input type="hidden" name="type" value="connecxion">
-                <div class="form-group">
-                    <label for="login"-co>Identifiant</label>
-                    <input type="text" class="form-control" id="login-co" name="login" placeholder="Identifiant">
-                </div>
-                <div class="form-group">
-                    <label for="password"-co>Password</label>
-                    <input type="password" class="form-control" id="password-co" name="password" placeholder="Mot de passe">
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">S'identifier</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+<div id="divEntete" class = "divGeneral">
+    <div id ="divInscription">
+        <a href="inscription">Inscription</a>
+    </div>
+    <h1 id="titre">Bienvenue sur SteamFanBoy !</h1>
+</div>
+
+<div id="divEnteteDeux" class = "divG/deral">
+    <div id="divRecherche">
+        <form action="recherche" class="form-horizontal" method=post">
+            <fieldset>
+                Recherche : <input type="text" name="recherche" value="">
+                <input type="submit" value="Rechercher" name="searchGame" />
+            </fieldset>
+        </form>
     </div>
 </div>
 
+<div id="divMilieu" class = ="divGeneral">
+    <div id="divCategories" class = "divGeneral">
+        <table id="tableCategories">
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+            <tr class="trEntete">
+                <td class="tdEntete">
+                    Genres
+                </td>
+            </tr>
+
+            <tr class="tableEnteteSeparateurPortefeuilleActions"> </tr>
+
+            <tr class="itemTableCategorie">
+                <td class="tdCategorie">
+                    RPG
+                </td>
+            </tr>
+
+            <tr class="itemTableCategorie">
+                <td class="tdCategorie">
+                    Aventure
+                </td>
+            </tr>
+
+            <tr class="itemTableCategorie">
+                <td class="tdCategorie">
+                    Action
+                </td>
+            </tr>
+
+            <tr class="itemTableCategorie">
+                <td class="tdCategorie">
+                    Puzzle game
+                </td>
+            </tr>
+
+            <tr class="itemTableCategorie">
+                <td class="tdCategorie">
+                    FPS
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div id="divListeJeux" class = "divGeneral">
+
+        <table id="tableListeDesJeux">
+
+            <tr class="trEntete">
+                <td class="tdEntete">
+                    Liste des jeux
+                </td>
+            </tr>
+
+            <tr class="tableEnteteSeparateurPortefeuilleActions"> </tr>
+
+            <tr class="trJeu">
+                <td class="tdJeu">
+                    Jeu 1
+                </td>
+            </tr>
+
+            <tr class="trJeu">
+                <td class="tdJeu">
+                    Jeu 2
+                </td>
+            </tr>
+
+            <tr class="trJeu">
+                <td class="tdJeu">
+                    Jeu 3
+                </td>
+            </tr>
+
+            <tr class="trJeu">
+                <td class="tdJeu">
+                    Jeu 4
+                </td>
+            </tr>
+
+            <tr class="trJeu">
+                <td class="tdJeu">
+                    Jeu 5
+                </td>
+            </tr>
+
+            <tr class="trJeu">
+                <td class="tdJeu">
+                    Jeu 6
+                </td>
+            </tr>
+
+            <tr class="trJeu">
+                <td class="tdJeu">
+                    Jeu 7
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
 </body>
 </html>
