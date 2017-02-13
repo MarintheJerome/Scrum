@@ -1,4 +1,15 @@
+<%@ page import="steam.model.Game" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.util.Calendar" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%
+    Game game = new Game();
+    game.setName(request.getParameter("recherche"));
+    game.setShortDescription("Ce jeu raconte une histoire epic pleine de rebondissements ! Incarnez Toinou, un lapin au corps qui fait rougir tous ses confrères et voyagez avec lui !");
+    game.setFullDescription("Voyagez avec Toinou dans un monde sans limite ! <br> Configuration requise : <br> - Carte graphique : GTX 1080 <br> - Processeur : i7 6900K <br> - Ram : 16GO");
+    game.setReleaseDate(new Date(Calendar.getInstance().getTime().getTime()));
+    game.setVideo("../video/sample.mp4");
+%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,10 +17,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Annuaire</title>
+    <title>Fiche de <%=  game.getName() %></title>
 
     <!-- Bootstrap -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="../style/bootstrap.min.css" rel="stylesheet">
+    <link href="../style/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,60 +31,39 @@
     <![endif]-->
 </head>
 <body>
-<h1>Fiche du jeu</h1>
-<div class="container-fluid">
+<h1 class="title">Fiche de <%=game.getName()%></h1>
+<div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <form method="post" action="index.jsp">
-                <input type="hidden" name="type" value="inscription">
-                <div class="form-group">
-                    <label for="login">Identifiant</label>
-                    <input type="text" class="form-control" id="login" name="login" placeholder="Identifiant">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input name="entreprise" type="checkbox"> Je suis une entreprise
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
-                    <p class="help-block">Inutile si vous êtes une entreprise</p>
-                </div>
-                <div class="form-group">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
-                    <p class="help-block">Inutile si vous êtes une entreprise</p>
-                </div>
-                <div class="form-group">
-                    <label for="raison">Raison sociale</label>
-                    <input type="text" class="form-control" id="raison" name="raison" placeholder="Raison sociale">
-                    <p class="help-block">Inutile si vous êtes une personne</p>
-                </div>
-                <button type="submit" class="btn btn-default">S'enregistrer</button>
-            </form>
+        <div>
+            <div>
+                <video autoplay controls class="video col-md-8">
+                    <source src="<%=game.getVideo()%>" type="video/mp4">
+                </video>
+            </div>
+            <div class="releasedate">
+                <p>
+                    Date de sortie : <%=game.getReleaseDate()%>
+                </p>
+            </div>
+            <div class="shortdescription">
+                <p>
+                    <%=game.getShortDescription()%>
+                </p>
+            </div>
         </div>
-        <div class="col-md-2">
-            <form class="form-horizontal" method="post" action="index.jsp">
-                <input type="hidden" name="type" value="connecxion">
-                <div class="form-group">
-                    <label for="login"-co>Identifiant</label>
-                    <input type="text" class="form-control" id="login-co" name="login" placeholder="Identifiant">
-                </div>
-                <div class="form-group">
-                    <label for="password"-co>Password</label>
-                    <input type="password" class="form-control" id="password-co" name="password" placeholder="Mot de passe">
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">S'identifier</button>
-                    </div>
-                </div>
-            </form>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="pager">
+                60 euros <input type="submit" value="Acheter" name="buyGame" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="fulldescription">
+            <p>
+                <%=game.getFullDescription()%>
+            </p>
         </div>
     </div>
 </div>

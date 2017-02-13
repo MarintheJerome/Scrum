@@ -7,15 +7,14 @@ import steam.model.User;
 
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
-import java.util.Date;
 
 /**
  * Created by Yhugo on 10/02/2017.
  */
-@WebServlet(name = "Inscription",urlPatterns={"/inscription","/Inscription"})
+@WebServlet(name = "Inscription",urlPatterns={"/inscription","/Inscription", "/inscription.jsp", "/Inscription.jsp"})
 public class Inscription extends javax.servlet.http.HttpServlet {
 
-    public static final String VUE ="/WEB-INF/Inscription.jsp";
+    public static final String VUE ="/WEB-INF/inscription.jsp";
     public static final String RESULT ="/WEB-INF/result.jsp";
     public static final String LOGIN = "login";
     public static final String MDP = "password";
