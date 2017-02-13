@@ -1,0 +1,61 @@
+[{
+"name": "Toinou au pérou",
+"shortdescription": "De nouvelles aventures pour Toinou ! Cette fois-ci au Pérou !!!!!!!",
+"fulldescription": "Configuration requise : <br> - ça marche sur un toaster",
+"price": 10,
+"video": "../video/toinou1.mp4",
+"releasedate": "2016/08/24",
+"tags": [
+"action",
+"aventure"
+]
+}, {
+"name": "Toinou au Tibet",
+"shortdescription": "De nouvelles aventures pour Toinou ! Cette fois-ci au Tibet !!!!!!!",
+"fulldescription": "Configuration requise : <br> - ça marche sur un toaster",
+"price": 10,
+"video": "../video/toinou2.mp4",
+"releasedate": "2016/08/21",
+"tags": [
+"action",
+"aventure"
+]
+}, {
+"name": "GTA V",
+"shortdescription": "Nouvelle itération de Grand Theft Auto ! Grandiose !",
+"fulldescription": "Configuration requise : <br> - Carte graphique : GTX 970 <br> - Processeur : i7 4600K <br> - Ram : 8GO",
+"price": 60,
+"video": "../video/gta5.mp4",
+"releasedate": "2007/06/13",
+"tags": [
+"action",
+"aventure",
+"nudité",
+"18+ WESH"
+]
+}, {
+"name": "Rocket League",
+"shortdescription": "Voiture + Football = AWESOME",
+"fulldescription": "Configuration requise : <br> - Carte graphique : GTX 770 <br> - Processeur : n'importe quel i5 <br> - Ram : 4GO",
+"price": 20,
+"video": "../video/rocketleague.mp4",
+"releasedate": "2015/08/24",
+"tags": [
+"foot",
+"car",
+"action",
+"multiplayer"
+]
+}, {
+"name": "CSGO",
+"shortdescription": "Nouvelle itération de Counter Striker ! GOGOGO !",
+"fulldescription": "Configuration requise : <br> - Carte graphique : GTX 660 <br> - Processeur : n'importe quel i3 <br> - Ram : 4GO",
+"price": 15,
+"video": "../video/csgo.mp4",
+"releasedate": "2012/07/01",
+"tags": [
+"action",
+"multiplayer",
+"guns"
+]
+}]
