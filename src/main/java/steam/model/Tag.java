@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import steam.bdd.MongoDB;
 
 /**
  * Created by jerome on 10/02/2017.
@@ -35,14 +36,9 @@ public class Tag {
     }
 
     public void sauvegarder() {
-        System.out.println("Sauvegarde tag "+nom+" par MongoDB");
-
         Document document = toDocument();
-
-        mc = new MongoClient("localhost",27017);
-        mdb = mc.getDatabase("Scrum");
-        collection = mdb.getCollection("tags");
-
+        MongoDB mongo = MongoDB.getInstance();
+        MongoCollection collection = mongo.mdb.getCollection("tags");
         collection.insertOne(document);
     }
 
