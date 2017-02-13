@@ -11,6 +11,7 @@
     <title>Résultat</title>
 </head>
 <body>
-
+<p>${message}</p>
+<p><a href="/">Retour Accueil</a></p>
 </body>
 </html>
