@@ -1,7 +1,10 @@
 package steam.model;
 
+import com.mongodb.Mongo;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import steam.bdd.MongoDB;
@@ -135,17 +138,34 @@ public class Game {
     public static void find(ObjectId game) {
     }
 
-    public Game getGameInfo(String name){
+    public Game getGameInfo(String name) {
         MongoDB mongo = MongoDB.getInstance();
         MongoCollection<Document> collection = mongo.mdb.getCollection("games");
         FindIterable<Document> games = collection.find();
         Game game;
-        for(Document document : games){
+        for (Document document : games) {
             game = new Game(document);
-            if(game.getName().equals(name)){
+            if (game.getName().equals(name)) {
                 return game;
             }
         }
         return null;
+    }
+
+    public void sauvegarder() {
+        Document document = toDocument();
+        MongoDB mongo = MongoDB.getInstance();
+        MongoCollection collection = mongo.mdb.getCollection("games");
+        collection.insertOne(document);
+    }
+
+    public Document toDocument() {
+        Document db = new Document();
+        db.put("nom", name);
+        db.put("shortDescription", shortDescription);
+        db.put("fullDescription", fullDescription);
+        db.put("realseDate", releaseDate);
+        db.put("tags", tags);
+        return db;
     }
 }

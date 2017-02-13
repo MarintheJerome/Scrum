@@ -18,7 +18,7 @@ public class MongoDB{
 
     public static MongoDB mongoDB;
 
-    public MongoDB(){
+    private MongoDB(){
         mc = new MongoClient("localhost", 27017);
         mdb = mc.getDatabase("Scrum");
     }

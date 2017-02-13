@@ -1,5 +1,6 @@
 package steam.servlet;
 
+import com.mongodb.BasicDBObject;
 import org.bson.Document;
 import org.mindrot.jbcrypt.BCrypt;
 import steam.bdd.MongoDB;
@@ -38,10 +39,23 @@ public class Inscription extends javax.servlet.http.HttpServlet {
 
         Document d = user.toDocument();
 
-        MongoDB.getInstance().mdb.getCollection("Users").insertOne(d);
-
         StringBuilder message = new StringBuilder();
-        message.append("Vous êtes bien inscris, merci d'utiliser notre service");
+
+        if(!login.equals("") && !mdp.equals("") && !nom.equals("") && !prenom.equals("")
+                && !adresse.equals("") && !telephone.equals("") && !datenaissance.equals("")){
+            BasicDBObject query = new BasicDBObject();
+            query.put("login", login);
+            Document testing = MongoDB.getInstance().mdb.getCollection("Users").find(query).first();
+            System.out.println(testing);
+            if(testing ==null){
+                MongoDB.getInstance().mdb.getCollection("Users").insertOne(d);
+                message.append("Vous êtes bien inscris, merci d'utiliser notre service.");
+            }else{
+                message.append("Un utilisateur existe déjà avec ce login merci d'essyer un nom.");
+            }
+        }else{
+            message.append("Vous n'avez pas rempli le questionnaire entièrement.");
+        }
 
         request.getSession().setAttribute("message", message);
         this.getServletContext().getRequestDispatcher(RESULT).forward( request, response );

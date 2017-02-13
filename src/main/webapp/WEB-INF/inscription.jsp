@@ -57,15 +57,15 @@
             </form>
         </div>
         <div class="col-md-2">
-            <form class="form-horizontal" method="post" action="index.jsp">
+            <form class="form-horizontal" method="post" action="/Connexion">
                 <input type="hidden" name="type" value="connecxion">
                 <div class="form-group">
                     <label for="login"-co>Identifiant</label>
-                    <input type="text" class="form-control" id="login-co" name="login" placeholder="Identifiant">
+                    <input type="text" class="form-control" id="login-co" name="login-co" placeholder="Identifiant">
                 </div>
                 <div class="form-group">
                     <label for="password"-co>Password</label>
-                    <input type="password" class="form-control" id="password-co" name="password" placeholder="Mot de passe">
+                    <input type="password" class="form-control" id="password-co" name="password-co" placeholder="Mot de passe">
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

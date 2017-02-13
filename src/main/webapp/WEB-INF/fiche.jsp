@@ -4,7 +4,7 @@
     Game game = new Game();
     game = game.getGameInfo(request.getParameter("recherche"));
     if(game == null){
-        
+
     }
 
 %>
