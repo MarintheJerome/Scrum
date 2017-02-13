@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="pager">
-                <%=game.getPrice()%>s <input type="submit" value="Acheter" name="buyGame" />
+                <%=game.getPrice()%> €<input type="submit" value="Acheter" name="buyGame" />
             </div>
         </div>
     </div>
