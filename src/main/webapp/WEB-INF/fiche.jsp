@@ -1,12 +1,7 @@
 <%@ page import="steam.model.Game" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
-    Game game = new Game();
-    game = game.getGameInfo(request.getParameter("recherche"));
-    if(game == null){
-
-    }
-
+    Game game = (Game) request.getAttribute("game");
 %>
 <!DOCTYPE html>
 <html lang="fr">
