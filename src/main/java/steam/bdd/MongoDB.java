@@ -23,19 +23,6 @@ public class MongoDB{
         mdb = mc.getDatabase("Scrum");
     }
 
-    public Game getGameInfo(String name){
-        MongoCollection<Document> collection = mdb.getCollection("games");
-        FindIterable<Document> games = collection.find();
-        Game game;
-        for(Document document : games){
-            game = new Game(document);
-            if(game.getName().equals(name)){
-                return game;
-            }
-        }
-        return null;
-    }
-
     public static synchronized MongoDB getInstance(){
         if(mongoDB == null){
             mongoDB = new MongoDB();

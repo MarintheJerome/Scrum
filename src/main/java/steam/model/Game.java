@@ -1,9 +1,15 @@
 package steam.model;
 
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import steam.bdd.MongoDB;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +20,7 @@ public class Game {
     private String name;
     private String shortDescription;
     private String fullDescription;
+    private double price;
     private Date releaseDate;
     private ArrayList<Tag> tags;
     private String video;
@@ -30,18 +37,33 @@ public class Game {
         this.tags = tags;
     }
 
+    public Game(String name, String shortDescription, String fullDescription, double price, String video, Date releaseDate, ArrayList<Tag> tags) {
+        this.name = name;
+        this.shortDescription = shortDescription;
+        this.fullDescription = fullDescription;
+        this.price = price;
+        this.video = video;
+        this.releaseDate = releaseDate;
+        this.tags = tags;
+    }
+
     public Game(Document document){
         this.id = (ObjectId) document.get("_id");
         this.name = document.get("name").toString();
-        this.shortDescription = document.get("shortDescription").toString();
-        this.fullDescription = document.get("fullDescription").toString();
-        this.releaseDate = (Date) document.get("date");
+        this.shortDescription = document.get("shortdescription").toString();
+        this.fullDescription = document.get("fulldescription").toString();
+        this.video = document.get("video").toString();
+        DateFormat df = new SimpleDateFormat("YYYY/MM/dd");
+        Date startDate = null;
+        try {
+            startDate = df.parse(document.get("releasedate").toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        this.releaseDate = startDate;
         this.tags = new ArrayList<>();
-        ArrayList<Document> tagsMongo = (ArrayList<Document>) document.get("tags");
-        for (Document tag : tagsMongo) {
-            if (tag.get("tag") == null) {
-                break;
-            }
+        ArrayList<String> tagsMongo = (ArrayList<String>) document.get("tags");
+        for (String tag : tagsMongo) {
             this.tags.add(new Tag(tag));
         }
     }
@@ -78,6 +100,14 @@ public class Game {
         this.fullDescription = fullDescription;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public Date getReleaseDate() {
         return releaseDate;
     }
@@ -103,5 +133,19 @@ public class Game {
     }
 
     public static void find(ObjectId game) {
+    }
+
+    public Game getGameInfo(String name){
+        MongoDB mongo = MongoDB.getInstance();
+        MongoCollection<Document> collection = mongo.mdb.getCollection("games");
+        FindIterable<Document> games = collection.find();
+        Game game;
+        for(Document document : games){
+            game = new Game(document);
+            if(game.getName().equals(name)){
+                return game;
+            }
+        }
+        return null;
     }
 }
