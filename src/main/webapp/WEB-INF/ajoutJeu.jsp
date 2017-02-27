@@ -1,58 +1,47 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="steam.model.Tag" %>
-<%@ page import="steam.model.Game" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<style type="text/css">
-    <jsp:include page="/src/main/webapp/bootstrap.min.css" />
-</style>
-
-<% if ( !(request.getParameter("name").isEmpty() && !(request.getParameter("shortDesc")).isEmpty() &&
-        !(request.getParameter("fullDesc")).isEmpty() && !(request.getParameter("date")).isEmpty())  ) {
-%>
-<html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <title>Ajout jeu</title>
-    <meta http-equiv="refresh" content="2;URL=index.jsp">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Inscription</title>
+
+    <!-- Bootstrap -->
+    <link href="../style/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-    <%
-        ArrayList<Tag> tags = new ArrayList<>();
-        for (int i=1 ; i < 5 ; i++ ) {
-            if ( !(request.getParameter("tag"+i).isEmpty()) ) {
-                tags.add(new Tag(request.getParameter("tag"+i)));
-            }
-        }
+<h1>Ajouter un nouveau jeu</h1>
 
-        String name = request.getParameter("name");
-        String shortDesc = request.getParameter("shortDesc");
-        String fullDesc = request.getParameter("fullDesc");
-        String date = request.getParameter("date");
+<div class="divGeneral">
+    <form class="form-horizontal" method=post action="/AjoutJeu">
+        <fieldset>
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-        Date dateFinale = sdf.parse(date);
+            Nom du jeu : <input type="text" name="nom" value=""> </br>
+            Description rapide : <input type="text" name="shortDesc" value=""> </br>
+            Description complète : <input type="text" name="fullDesc" value=""> </br>
+            Date de sortie : <input type="date" name="date" value=""> </br>
+            Chemin d'accès de la vidéo : <input type="date" name="video" value=""> </br>
+            Prix du jeu : <input type="text" name="price" value=""> </br>
+            Tag 1 : <input type="text" name="tag1" value=""> </br>
+            Tag 2 : <input type="text" name="tag2" value=""> </br>
+            Tag 3 : <input type="text" name="tag3" value=""> </br>
+            Tag 4 : <input type="text" name="tag4" value=""> </br>
 
-        Game game = new Game(name,shortDesc,fullDesc,dateFinale,tags);
-        for(Tag t : tags) {
-            t.sauvegarder();
-        }
+            <button class="btn btn-primary" type="submit">Ajouter le jeu</button>
 
-        game.sauvegarder();
-    } else {
-    %>
-Ajout du jeu réussi !
-<html>
-<head>
-    <title>Connexion</title>
-    <meta http-equiv="refresh" content="2;URL=ajoutJeu.html">
-</head>
-<body>
-Il manque des attributs au jeu, veuillez réessayer.
-<%
-    }
-%>
+        </fieldset>
+    </form>
+</div>
 
 </body>
 </html>

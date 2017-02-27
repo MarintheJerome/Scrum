@@ -164,8 +164,11 @@ public class Game {
         db.put("nom", name);
         db.put("shortDescription", shortDescription);
         db.put("fullDescription", fullDescription);
-        db.put("realseDate", releaseDate);
+        db.put("releaseDate", releaseDate);
         db.put("tags", tags);
+        db.put("video", video);
+        db.put("price", price);
+
         return db;
     }
 }
