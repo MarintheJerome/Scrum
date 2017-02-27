@@ -10,10 +10,7 @@ import org.bson.codecs.Codec;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
-import steam.model.Basket;
-import steam.model.BasketCodec;
-import steam.model.Game;
-import steam.model.GameCodec;
+import steam.model.*;
 
 import java.util.ArrayList;
 
@@ -30,7 +27,7 @@ public class MongoDB{
 
         CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
                 MongoClient.getDefaultCodecRegistry(),
-                CodecRegistries.fromCodecs(new BasketCodec(), new GameCodec())
+                CodecRegistries.fromCodecs(new BasketCodec(), new GameCodec(), new TagCodec())
         );
 
         MongoClientOptions options =
