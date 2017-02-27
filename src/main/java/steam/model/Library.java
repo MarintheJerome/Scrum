@@ -37,7 +37,7 @@ public class Library {
         this.entries = entries;
     }
 
-    public static Library find(Object userId) {
+    public static Library find(ObjectId userId) {
         MongoDB mongoDB = MongoDB.getInstance();
         MongoCollection<Library> libDoc = mongoDB.mdb.getCollection("libraries", Library.class);
         BasicDBObject query = new BasicDBObject();
