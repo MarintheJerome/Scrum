@@ -51,7 +51,7 @@
             <% } %>
             <tr>
                 <td></td>
-                <td></td>
+                <td>Total</td>
                 <td><%= total %></td>
             </tr>
             </tbody>
