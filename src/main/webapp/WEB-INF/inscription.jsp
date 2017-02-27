@@ -53,6 +53,17 @@
                     <label for="dateNaissance">Date de Naissance</label>
                     <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
                 </div>
+
+
+                <div class="form-group">
+                    <label for="role">Rôle</label>
+                    <select class="form-control" id="role" name="role">
+                        <option value="Client">Client</option>
+                        <option value="Editeur">Editeur</option>
+                        <option value="Chargé">Chargé de Facturation</option>
+                        <option value="Administrateur">Administrateur</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-default">S'enregistrer</button>
             </form>
         </div>
