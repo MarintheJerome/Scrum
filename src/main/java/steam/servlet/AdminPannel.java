@@ -14,7 +14,7 @@ import java.io.IOException;
 public class AdminPannel  extends javax.servlet.http.HttpServlet {
 
 
-    public static final String VUE = "/WEB-INF/inscription.jsp";
+    public static final String VUE = "/WEB-INF/pannelAdmin.jsp";
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
