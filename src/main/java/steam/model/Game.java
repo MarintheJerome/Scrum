@@ -1,5 +1,6 @@
 package steam.model;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.Mongo;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -135,7 +136,12 @@ public class Game {
         this.tags = tags;
     }
 
-    public static void find(ObjectId game) {
+    public static Game find(ObjectId id) {
+        BasicDBObject query = new BasicDBObject();
+        query.put("_id", id);
+        MongoDatabase mdb = MongoDB.getInstance().mdb;
+        MongoCollection<Document> gamesColl = mdb.getCollection("games");
+        return new Game(gamesColl.find(query).first());
     }
 
     public Game getGameInfo(String name) {

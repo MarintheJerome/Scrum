@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="pager">
-                <%=game.getPrice()%> €<input type="submit" value="Acheter" name="buyGame" />
+                <%=game.getPrice()%> €<a class="btn btn-primary" href="ajoutPanier.jsp?game=<%= game.getId() %>">Acheter</a>
             </div>
         </div>
     </div>
