@@ -1,14 +1,9 @@
 package steam.servlet;
 
 import steam.model.Game;
-import steam.model.Tag;
-
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by jerome on 27/02/2017.
