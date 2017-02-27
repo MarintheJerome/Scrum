@@ -1,12 +1,19 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<!DOCTYPE html>
-<html lang="fr">
+<%--
+  Created by IntelliJ IDEA.
+  User: Yhugo
+  Date: 27/02/2017
+  Time: 11:00
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Inscription & Connexion</title>
+    <title>Ajouter un compte</title>
 
     <!-- Bootstrap -->
     <link href="../style/bootstrap.min.css" rel="stylesheet">
@@ -19,11 +26,10 @@
     <![endif]-->
 </head>
 <body>
-<h1>Identifiez-vous ou créez votre compte pour utiliser notre service.</h1>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <form method="post" action="/Inscription">
+            <form method="post" action="/creationCompte">
                 <input type="hidden" name="type" value="inscription">
                 <div class="form-group">
                     <label for="login">Identifiant</label>
@@ -54,36 +60,20 @@
                     <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
                 </div>
 
-                <button type="submit" class="btn btn-default">S'enregistrer</button>
-            </form>
-        </div>
-        <div class="col-md-2">
-            <form class="form-horizontal" method="post" action="/connexion">
-                <input type="hidden" name="type" value="connecxion">
                 <div class="form-group">
-                    <label for="login"-co>Identifiant</label>
-                    <input type="text" class="form-control" id="login-co" name="login-co" placeholder="Identifiant">
+                    <label for="role">Rôle</label>
+                    <select class="form-control" id="role" name="role">
+                        <option value="Client">Client</option>
+                        <option value="Editeur">Editeur</option>
+                        <option value="Chargé">Chargé de Facturation</option>
+                        <option value="Administrateur">Administrateur</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="password"-co>Password</label>
-                    <input type="password" class="form-control" id="password-co" name="password-co" placeholder="Mot de passe">
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">S'identifier</button>
-                    </div>
-                </div>
+
+                <button type="submit" class="btn btn-default">Enregistrer</button>
             </form>
         </div>
     </div>
 </div>
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
 </body>
 </html>
