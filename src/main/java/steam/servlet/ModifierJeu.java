@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by Nicochu on 13/02/2017.
+ * Created by Nicochu on 27/02/2017.
  */
-@WebServlet(name = "AjoutJeu",urlPatterns={"/ajoutJeu","/AjoutJeu", "/ajoutJeu.jsp", "/AjoutJeu.jsp"})
-public class AjoutJeu extends javax.servlet.http.HttpServlet {
+@WebServlet(name = "ModifierJeu",urlPatterns={"/ModifierJeu","/modifierjeu", "/ModifierJeu.jsp", "/modifierjeu.jsp"})
+public class ModifierJeu extends javax.servlet.http.HttpServlet {
 
-    public static final String VUE ="/WEB-INF/ajoutJeu.jsp";
+    public static final String VUE ="/WEB-INF/ModifierJeu.jsp";
     public static final String RESULT ="/WEB-INF/result.jsp";
     public static final String NAME = "nom";
     public static final String SHORTDESC = "shortDesc";
@@ -66,4 +66,5 @@ public class AjoutJeu extends javax.servlet.http.HttpServlet {
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
+
 }

@@ -32,6 +32,9 @@
         <% } else { %>
         <p><a href="/deconnexion">Déconnexion </a></p>
         <% } %>
+        <% if (request.getSession().getAttribute("role") != null && request.getSession().getAttribute("role").equals("Administrateur")) { %>
+        <p><a href="/admin">Administration </a></p>
+        <% }%>
     </div>
     <h1 id="titre">Bienvenue sur SteamFanBoy !</h1>
 </div>

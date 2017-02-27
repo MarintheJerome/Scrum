@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Inscription</title>
+    <title>Inscription & Connexion</title>
 
     <!-- Bootstrap -->
     <link href="../style/bootstrap.min.css" rel="stylesheet">
@@ -52,6 +52,17 @@
                 <div class="form-group">
                     <label for="dateNaissance">Date de Naissance</label>
                     <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="role">Rôle</label>
+                    <select class="form-control" id="role" name="role">
+                        <option value="Client">Client</option>
+                        <option value="Editeur">Editeur</option>
+                        <option value="Chargé">Chargé de Facturation</option>
+                        <option value="Administrateur">Administrateur</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-default">S'enregistrer</button>
             </form>
