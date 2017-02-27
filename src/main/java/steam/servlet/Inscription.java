@@ -24,6 +24,7 @@ public class Inscription extends javax.servlet.http.HttpServlet {
     public static final String ADRESSE = "adresse";
     public static final String TELEPHONE = "telephone";
     public static final String DATENAISSANCE = "dateNaissance";
+    public static final String ROLE = "role";
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 
@@ -34,10 +35,13 @@ public class Inscription extends javax.servlet.http.HttpServlet {
         String adresse = request.getParameter(ADRESSE);
         String telephone = request.getParameter(TELEPHONE);
         String datenaissance = request.getParameter(DATENAISSANCE);
+        String role = request.getParameter(ROLE);
 
-        User user = new User(nom, prenom, telephone, adresse, datenaissance,login, BCrypt.hashpw(mdp, BCrypt.gensalt()));
+        User user = new User(nom, prenom, telephone, adresse, datenaissance,login, BCrypt.hashpw(mdp, BCrypt.gensalt()),role);
 
         Document d = user.toDocument();
+
+        if(role.equals("")) role="Client";
 
         StringBuilder message = new StringBuilder();
 

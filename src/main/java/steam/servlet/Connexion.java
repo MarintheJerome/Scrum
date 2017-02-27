@@ -37,6 +37,7 @@ public class Connexion extends javax.servlet.http.HttpServlet {
             if (BCrypt.checkpw(mdp, user.getMdp())) {
                 message.append("Merci pour votre connexion.");
                 request.getSession().setAttribute("login", user.login);
+                request.getSession().setAttribute("role", user.role);
             }else{
                 message.append("Mot de passe incorrect.");
             }

@@ -16,8 +16,9 @@ public class User {
     public String telephone;
     public String adresse;
     public String dateNaissance;
+    public String role;
 
-    public User(String n, String p, String t, String a, String date,String log, String mdp){
+    public User(String n, String p, String t, String a, String date,String log, String mdp, String r){
         this.nom=n;
         this.prenom=p;
         this.telephone=t;
@@ -25,6 +26,7 @@ public class User {
         this.dateNaissance=date;
         this.login=log;
         this.mdp=mdp;
+        this.role=r;
     }
 
     public User(Document document){
@@ -35,6 +37,7 @@ public class User {
         this.dateNaissance = document.get("datenaissance").toString();
         this.login = document.get("login").toString();
         this.mdp = document.get("mdp").toString();
+        this.role = document.get("role").toString();
     }
 
     public Document toDocument(){
@@ -46,6 +49,7 @@ public class User {
         db.put("datenaissance", this.dateNaissance);
         db.put("login", this.login);
         db.put("mdp", this.mdp);
+        db.put("role", this.role);
         return db;
     }
 
@@ -103,5 +107,21 @@ public class User {
 
     public void setDateNaissance(String dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
