@@ -1,6 +1,10 @@
 <%@ page import="steam.model.Game" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+
+<%
+    ArrayList<Game> games = (ArrayList<Game>) request.getAttribute("games");
+%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,11 +32,9 @@
     <form class="form-horizontal" method=post action="/ModifierJeu">
         <fieldset>
 
-            <input type=text name="gameName" list=games >
+            <input autocomplete="off" type=text name="gameName" list=games >
             <datalist id=games >
                 <%
-                    ArrayList<Game> games = (ArrayList<Game>) request.getAttribute("games");
-
                     for(Game game : games){
                 %>
                 <option value="<%= game.getName() %>"> <%= game.getName() %> </option>

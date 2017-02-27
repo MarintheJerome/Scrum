@@ -26,7 +26,7 @@ public class GameCodec  implements CollectibleCodec<Game> {
         if(value.getId() != null)
             document.put("_id", value.getId());
         if(value.getName() != null)
-            document.put("nom", value.getName());
+            document.put("name", value.getName());
         if(value.getShortDescription() != null)
             document.put("shortDescription", value.getShortDescription());
         if(value.getFullDescription() != null)
@@ -50,7 +50,7 @@ public class GameCodec  implements CollectibleCodec<Game> {
         Game game = new Game();
 
         game.setId(document.getObjectId("_id"));
-        game.setName((String)document.get("nom"));
+        game.setName((String)document.get("name"));
         game.setShortDescription((String)document.get("shortDescription"));
         game.setFullDescription((String)document.get("fullDescription"));
         game.setReleaseDate((Date)document.get("fullDescription"));
