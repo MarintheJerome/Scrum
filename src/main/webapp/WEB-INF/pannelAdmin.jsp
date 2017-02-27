@@ -12,7 +12,7 @@
 </head>
 <body>
 <p> Options d'aministration : </p>
-
-<p><p><a href="/">Retour </a></p></p>
+<p><a href="/creationCompte">Créer un Compte </a></p>
+<p><a href="/">Retour </a></p>
 </body>
 </html>

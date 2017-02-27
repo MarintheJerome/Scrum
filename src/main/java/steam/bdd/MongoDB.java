@@ -10,10 +10,7 @@ import org.bson.codecs.Codec;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
-import steam.model.Basket;
-import steam.model.BasketCodec;
-import steam.model.Game;
-import steam.model.GameCodec;
+import steam.model.*;
 
 import java.util.ArrayList;
 
@@ -30,7 +27,7 @@ public class MongoDB{
 
         CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
                 MongoClient.getDefaultCodecRegistry(),
-                CodecRegistries.fromCodecs(new BasketCodec(), new GameCodec())
+                CodecRegistries.fromCodecs(new BasketCodec(), new GameCodec(), new TagCodec())
         );
 
         MongoClientOptions options =
@@ -46,19 +43,5 @@ public class MongoDB{
             mongoDB = new MongoDB();
         }
         return mongoDB;
-    }
-
-    public ArrayList<Game> getGamesSearch(String name){
-        ArrayList<Game> toReturn = new ArrayList<>();
-        MongoCollection<Document> collection = mdb.getCollection("games");
-        FindIterable<Document> games = collection.find();
-        Game game;
-        for(Document document : games){
-            game = new Game(document);
-            if(game.getName().contains(name)){
-                toReturn.add(game);
-            }
-        }
-        return toReturn;
     }
 }

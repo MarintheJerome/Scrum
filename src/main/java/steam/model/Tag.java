@@ -18,6 +18,18 @@ public class Tag {
     static MongoDatabase mdb ;
     static MongoCollection collection;
 
+    public Tag() {
+
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
     public Tag(String nom) {
         this.nom = nom;
     }
@@ -46,5 +58,10 @@ public class Tag {
         Document db = new Document();
         db.put("nom", nom);
         return db;
+    }
+
+    public Tag withNewObjectId() {
+        this.id = ObjectId.get();
+        return this;
     }
 }

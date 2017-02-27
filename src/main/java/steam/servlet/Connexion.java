@@ -29,11 +29,10 @@ public class Connexion extends javax.servlet.http.HttpServlet {
         BasicDBObject query = new BasicDBObject();
         query.put("login", login);
 
-        User user = new User(MongoDB.getInstance().mdb.getCollection("Users").find(query).first());
-
-        if (user == null) {
+        if (MongoDB.getInstance().mdb.getCollection("Users").find(query).first() == null) {
             message.append("Utilisateur non trouvé.");
         } else {
+            User user = new User(MongoDB.getInstance().mdb.getCollection("Users").find(query).first());
             if (BCrypt.checkpw(mdp, user.getMdp())) {
                 message.append("Merci pour votre connexion.");
                 request.getSession().setAttribute("login", user.login);
