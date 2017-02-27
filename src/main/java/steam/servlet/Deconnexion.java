@@ -22,6 +22,7 @@ public class Deconnexion extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("login", null);
+        request.getSession().setAttribute("role", null);
         request.getSession().setAttribute("message", "Vous avec été déconnecté ! Have fun day.");
         this.getServletContext().getRequestDispatcher(RESULT).forward( request, response );
     }
