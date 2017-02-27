@@ -46,7 +46,7 @@ public class BasketCodec implements CollectibleCodec<Basket> {
 
         basket.setId(document.getObjectId("_id"));
 
-        basket.setUserId(document.getObjectId("userId"));
+        basket.setUserId(document.getString("userId"));
 
         basket.setGames(document.get("games", ArrayList.class));
         

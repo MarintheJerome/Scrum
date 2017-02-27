@@ -17,7 +17,7 @@ public class Basket{
 
     private ObjectId id;
 
-    private ObjectId userId;
+    private String login;
 
     private List<ObjectId> games;
 
@@ -34,12 +34,12 @@ public class Basket{
         this.id = id;
     }
 
-    public ObjectId getUserId() {
-        return userId;
+    public String getUserId() {
+        return login;
     }
 
-    public void setUserId(ObjectId userId) {
-        this.userId = userId;
+    public void setUserId(String login) {
+        this.login = login;
     }
 
     public void setGames(List<ObjectId> games) {
@@ -52,7 +52,7 @@ public class Basket{
             this.games.add(gameId);
     }
 
-    public static Basket getBasket(ObjectId userId) {
+    public static Basket getBasket(String userId) {
         BasicDBObject query = new BasicDBObject();
         query.put("userId", userId);
         MongoDatabase mdb = MongoDB.getInstance().mdb;

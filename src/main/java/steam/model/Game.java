@@ -1,11 +1,13 @@
 package steam.model;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.Mongo;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import steam.bdd.MongoDB;
 
@@ -135,7 +137,12 @@ public class Game {
         this.tags = tags;
     }
 
-    public static void find(ObjectId game) {
+    public static Game find(ObjectId id) {
+        BasicDBObject query = new BasicDBObject();
+        query.put("_id", id);
+        MongoDatabase mdb = MongoDB.getInstance().mdb;
+        MongoCollection<Document> gamesColl = mdb.getCollection("games");
+        return new Game(gamesColl.find(query).first());
     }
 
     public Game getGameInfo(String name) {
@@ -150,6 +157,35 @@ public class Game {
             }
         }
         return null;
+    }
+
+    public static ArrayList<Game> findAll(){
+        ArrayList<Game> jeux = new ArrayList<>();
+        MongoDB mongo = MongoDB.getInstance();
+        MongoCollection<Document> collection = mongo.mdb.getCollection("games");
+        FindIterable<Document> games = collection.find();
+        Game game;
+        for (Document document : games) {
+            game = new Game(document);
+            jeux.add(game);
+        }
+        return jeux;
+    }
+
+    public static void deleteGame(String name){
+        BasicDBObject query = new BasicDBObject();
+        MongoDB mongo = MongoDB.getInstance();
+        MongoCollection<Document> collection = mongo.mdb.getCollection("games");
+        FindIterable<Document> games = collection.find();
+        Game game;
+        for (Document document : games) {
+            game = new Game(document);
+            if (game.getName().equals(name)) {
+                query.put("_id", game.getId());
+                collection.deleteOne(query);
+                break;
+            }
+        }
     }
 
     public void sauvegarder() {
@@ -170,5 +206,10 @@ public class Game {
         db.put("price", price);
 
         return db;
+    }
+
+    public Game withNewObjectId() {
+        this.id = ObjectId.get();
+        return this;
     }
 }

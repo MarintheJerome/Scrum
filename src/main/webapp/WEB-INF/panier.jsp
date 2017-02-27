@@ -1,7 +1,9 @@
 <%@ page import="steam.model.Game" %>
+<%@ page import="steam.model.Basket" %>
+<%@ page import="org.bson.types.ObjectId" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
-    Game game = (Game) request.getAttribute("game");
+    Basket basket = (Basket) request.getAttribute("basket");
 %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Fiche de <%=  game.getName() %></title>
+    <title>Mon Panier</title>
 
     <!-- Bootstrap -->
     <link href="../style/bootstrap.min.css" rel="stylesheet">
@@ -24,40 +26,36 @@
     <![endif]-->
 </head>
 <body>
-<h1 class="title">Fiche de <%=game.getName()%></h1>
+<h1 class="title">Mon panier</h1>
 <div class="container">
     <div class="row">
-        <div>
-            <div>
-                <video autoplay controls class="video col-md-8">
-                    <source src="<%=game.getVideo()%>" type="video/mp4">
-                </video>
-            </div>
-            <div class="releasedate">
-                <p>
-                    Date de sortie : <%=game.getReleaseDate()%>
-                </p>
-            </div>
-            <div class="shortdescription">
-                <p>
-                    <%=game.getShortDescription()%>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="pager">
-                <%=game.getPrice()%> €<a class="btn btn-primary" href="ajoutPanier.jsp?game=<%= game.getId() %>">Acheter</a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="fulldescription">
-            <p>
-                <%=game.getFullDescription()%>
-            </p>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>x</th>
+                    <th>Jeux</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+            <%   double total = 0;
+                for (ObjectId gameId: basket.getGames()) {
+                Game game = Game.find(gameId);
+                total += game.getPrice();
+            %>
+                <tr>
+                    <td><a href="suppimerPanier.jsp?id=<%= gameId %>">X</a></td>
+                    <td><%= game.getName()%></td>
+                    <td><%= game.getPrice() %></td>
+                </tr>
+            <% } %>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><%= total %></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
