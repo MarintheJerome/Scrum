@@ -21,13 +21,24 @@ public class SupprimerJeu extends javax.servlet.http.HttpServlet {
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         if(!request.getParameter("gameName").equals("")) {
-            Game.deleteGame(request.getParameter("gameName"));
-            request.getSession().setAttribute("message", "Jeu correctement supprimé");
-            this.getServletContext().getRequestDispatcher(REDIRECT).forward(request, response);
+            ArrayList<Game> games = Game.findAll();
+            boolean trouve = false;
+            for(Game game : games){
+                if(game.getName().equals(request.getParameter("gameName"))){
+                    trouve = true;
+                }
+            }
+            if(trouve){
+                Game.deleteGame(request.getParameter("gameName"));
+                request.getSession().setAttribute("message", "Jeu correctement supprimé");
+            }
+            else{
+                request.getSession().setAttribute("message", "Ce jeu n'existe pas");
+            }
         }else{
             request.getSession().setAttribute("message", "Veuillez selectionner un jeu avant de supprimer");
-            this.getServletContext().getRequestDispatcher(REDIRECT).forward(request, response);
         }
+        this.getServletContext().getRequestDispatcher(REDIRECT).forward(request, response);
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
