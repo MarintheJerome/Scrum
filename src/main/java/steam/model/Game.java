@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import steam.bdd.MongoDB;
 
@@ -156,6 +157,35 @@ public class Game {
             }
         }
         return null;
+    }
+
+    public static ArrayList<Game> findAll(){
+        ArrayList<Game> jeux = new ArrayList<>();
+        MongoDB mongo = MongoDB.getInstance();
+        MongoCollection<Document> collection = mongo.mdb.getCollection("games");
+        FindIterable<Document> games = collection.find();
+        Game game;
+        for (Document document : games) {
+            game = new Game(document);
+            jeux.add(game);
+        }
+        return jeux;
+    }
+
+    public static void deleteGame(String name){
+        BasicDBObject query = new BasicDBObject();
+        MongoDB mongo = MongoDB.getInstance();
+        MongoCollection<Document> collection = mongo.mdb.getCollection("games");
+        FindIterable<Document> games = collection.find();
+        Game game;
+        for (Document document : games) {
+            game = new Game(document);
+            if (game.getName().equals(name)) {
+                query.put("_id", game.getId());
+                collection.deleteOne(query);
+                break;
+            }
+        }
     }
 
     public void sauvegarder() {
