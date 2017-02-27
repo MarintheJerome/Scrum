@@ -1,17 +1,14 @@
 package steam.model;
 
 import org.bson.*;
-import org.bson.codecs.Codec;
-import org.bson.codecs.DecoderContext;
-import org.bson.codecs.DocumentCodec;
-import org.bson.codecs.EncoderContext;
+import org.bson.codecs.*;
 
 import java.util.Date;
 
 /**
  * Created by Nicochu on 27/02/2017.
  */
-public class GameCodec {
+public class GameCodec  implements CollectibleCodec<Game> {
     private Codec<Document> documentCodec;
 
     public GameCodec() {
