@@ -55,6 +55,7 @@ public class Game {
     public Game(Document document){
         this.id = (ObjectId) document.get("_id");
         this.name = document.get("name").toString();
+        this.price = (double) document.get("price");
         this.shortDescription = document.get("shortdescription").toString();
         this.fullDescription = document.get("fulldescription").toString();
         this.video = document.get("video").toString();
