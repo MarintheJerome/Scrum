@@ -13,10 +13,10 @@ import java.util.Date;
 /**
  * Created by Nicochu on 27/02/2017.
  */
-@WebServlet(name = "ModifierJeu",urlPatterns={"/ModifierJeu","/modifierjeu", "/ModifierJeu.jsp", "/modifierjeu.jsp"})
+@WebServlet(name = "modifierJeu",urlPatterns={"/modifierJeu","/modifierjeu", "/modifierJeu.jsp", "/modifierjeu.jsp"})
 public class ModifierJeu extends javax.servlet.http.HttpServlet {
 
-    public static final String VUE ="/WEB-INF/ModifierJeu.jsp";
+    public static final String VUE ="/WEB-INF/modifierJeu.jsp";
     public static final String RESULT ="/WEB-INF/result.jsp";
     public static final String NAME = "nom";
     public static final String SHORTDESC = "shortDesc";
