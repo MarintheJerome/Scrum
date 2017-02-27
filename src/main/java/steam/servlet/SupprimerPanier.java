@@ -13,8 +13,8 @@ import java.io.IOException;
 /**
  * Created by nitix on 27/02/17.
  */
-@WebServlet(name = "ajoutPanier", urlPatterns = {"/ajoutPanier.jsp"})
-public class AjoutPanier extends HttpServlet {
+@WebServlet(name = "supprimerPanier", urlPatterns = {"/supprimerPanier.jsp"})
+public class SupprimerPanier extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         if(request.getSession().getAttribute("login") == null){
@@ -25,10 +25,8 @@ public class AjoutPanier extends HttpServlet {
         ObjectId gameId = new ObjectId(sGameId);
         Game game = Game.find(gameId);
         Basket basket = Basket.getBasket((String) request.getSession().getAttribute("login"));
-        if(!basket.getGames().contains(gameId)){
-            basket.getGames().add(gameId);
-            basket.upsert();
-        }
+        basket.getGames().remove(gameId);
+        basket.upsert();
         request.setAttribute("basket", basket);
         this.getServletContext().getRequestDispatcher( "/WEB-INF/panier.jsp" ).forward( request, response );
     }

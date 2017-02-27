@@ -3,10 +3,13 @@ package steam.model;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.UpdateOptions;
+import com.mongodb.operation.FindAndReplaceOperation;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import steam.bdd.MongoDB;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,7 +22,7 @@ public class Basket{
 
     private String login;
 
-    private List<ObjectId> games;
+    private List<ObjectId> games = new ArrayList<>();
 
     public List<ObjectId> getGames() {
         return games;
@@ -43,6 +46,9 @@ public class Basket{
     }
 
     public void setGames(List<ObjectId> games) {
+        if(games == null){
+            this.games = new ArrayList<>();
+        }
         this.games = games;
     }
 
@@ -57,7 +63,12 @@ public class Basket{
         query.put("userId", userId);
         MongoDatabase mdb = MongoDB.getInstance().mdb;
         MongoCollection<Basket> basketsColl = mdb.getCollection("baskets", Basket.class);
-        return basketsColl.find(query).first();
+        Basket basket = basketsColl.find(query).first();
+        if(basket == null){
+            basket = new Basket();
+            basket.setUserId(userId);
+        }
+        return basket;
     }
 
     public void removeGame(ObjectId gameId) {
@@ -65,9 +76,12 @@ public class Basket{
     }
 
     public void upsert() {
+        BasicDBObject query = new BasicDBObject();
+        query.put("userId", getUserId());
         MongoDatabase mdb = MongoDB.getInstance().mdb;
         MongoCollection<Basket> basketsColl = mdb.getCollection("baskets", Basket.class);
-        basketsColl.insertOne(this);
+        UpdateOptions options = new UpdateOptions().upsert(true);
+        basketsColl.replaceOne(query, this, options);
     }
 
     public Basket withNewObjectId() {

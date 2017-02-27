@@ -49,7 +49,7 @@ public class BasketCodec implements CollectibleCodec<Basket> {
         basket.setUserId(document.getString("userId"));
 
         basket.setGames(document.get("games", ArrayList.class));
-        
+
         return basket;
     }
 

@@ -15,8 +15,8 @@
     <title>Mon Panier</title>
 
     <!-- Bootstrap -->
-    <link href="../style/bootstrap.min.css" rel="stylesheet">
-    <link href="../style/style.css" rel="stylesheet">
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +29,7 @@
 <h1 class="title">Mon panier</h1>
 <div class="container">
     <div class="row">
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>x</th>
@@ -44,7 +44,7 @@
                 total += game.getPrice();
             %>
                 <tr>
-                    <td><a href="suppimerPanier.jsp?id=<%= gameId %>">X</a></td>
+                    <td><a href="supprimerPanier.jsp?game=<%= gameId %>">X</a></td>
                     <td><%= game.getName()%></td>
                     <td><%= game.getPrice() %></td>
                 </tr>
