@@ -1,5 +1,7 @@
 package steam.servlet;
 
+import steam.model.Game;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +16,17 @@ import java.io.IOException;
 public class Recherche extends HttpServlet {
 
     public static final String VUE ="/WEB-INF/fiche.jsp";
+    public static final String ERROR ="/WEB-INF/nogame.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(VUE).forward(req, resp);
+        Game game = new Game();
+        game = game.getGameInfo(req.getParameter("recherche"));
+        if(game == null){
+            this.getServletContext().getRequestDispatcher(ERROR).forward(req, resp);
+        }else{
+            req.setAttribute("game", game);
+            this.getServletContext().getRequestDispatcher(VUE).forward(req, resp);
+        }
     }
 }

@@ -1,14 +1,7 @@
 <%@ page import="steam.model.Game" %>
-<%@ page import="java.sql.Date" %>
-<%@ page import="java.util.Calendar" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
-    Game game = new Game();
-    game.setName(request.getParameter("recherche"));
-    game.setShortDescription("Ce jeu raconte une histoire epic pleine de rebondissements ! Incarnez Toinou, un lapin au corps qui fait rougir tous ses confrères et voyagez avec lui !");
-    game.setFullDescription("Voyagez avec Toinou dans un monde sans limite ! <br> Configuration requise : <br> - Carte graphique : GTX 1080 <br> - Processeur : i7 6900K <br> - Ram : 16GO");
-    game.setReleaseDate(new Date(Calendar.getInstance().getTime().getTime()));
-    game.setVideo("../video/sample.mp4");
+    Game game = (Game) request.getAttribute("game");
 %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -55,7 +48,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="pager">
-                60 euros <input type="submit" value="Acheter" name="buyGame" />
+                <%=game.getPrice()%> €<input type="submit" value="Acheter" name="buyGame" />
             </div>
         </div>
     </div>
