@@ -25,6 +25,7 @@
     <div id ="divInscription">
         <p><a href="inscription">Inscription</a></p>
         <p><a href="/ajoutJeu">Ajouter un jeu </a></p>
+        <p><a href="/supprimerJeu">Supprimer un jeu </a></p>
         <p></p><h2>Menu : </h2></p>
         <% if (request.getSession().getAttribute("login") == null) { %>
         <p><a href="/connexion">Connexion </a></p>

@@ -29,18 +29,4 @@ public class MongoDB{
         }
         return mongoDB;
     }
-
-    public ArrayList<Game> getGamesSearch(String name){
-        ArrayList<Game> toReturn = new ArrayList<>();
-        MongoCollection<Document> collection = mdb.getCollection("games");
-        FindIterable<Document> games = collection.find();
-        Game game;
-        for(Document document : games){
-            game = new Game(document);
-            if(game.getName().contains(name)){
-                toReturn.add(game);
-            }
-        }
-        return toReturn;
-    }
 }
