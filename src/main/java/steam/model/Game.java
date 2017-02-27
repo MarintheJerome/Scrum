@@ -171,4 +171,9 @@ public class Game {
 
         return db;
     }
+
+    public Game withNewObjectId() {
+        this.id = ObjectId.get();
+        return this;
+    }
 }
